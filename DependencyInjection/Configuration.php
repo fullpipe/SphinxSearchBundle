@@ -60,8 +60,12 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('indexes')
                 ->isRequired()
                 ->requiresAtLeastOneElement()
-                    ->useAttributeAsKey('key')
-                    ->prototype('scalar')->end()
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('index')->isRequired()->end()
+                            ->scalarNode('entity')->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
     }

@@ -71,18 +71,17 @@ class Indexer
      */
     public function rotate($indexes)
     {
-
         $pb = $this->prepareProcessBuilder();
 
         if (is_array($indexes)) {
             foreach ($indexes as &$label) {
-                if (isset($this->indexes[$label])) {
-                    $pb->add($this->indexes[$label]);
+                if (isset($this->indexes[$label]['index'])) {
+                    $pb->add($this->indexes[$label]['index']);
                 }
             }
         } elseif (is_string($indexes)) {
-            if (isset($this->indexes[$indexes])) {
-                $pb->add($this->indexes[$indexes]);
+            if (isset($this->indexes[$indexes]['index'])) {
+                $pb->add($this->indexes[$indexes]['index']);
             }
         } else {
             throw new \RuntimeException(sprintf(

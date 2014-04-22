@@ -148,8 +148,8 @@ class SphinxSearch
          */
         $indexNames = '';
         foreach ($indexes as &$label) {
-            if (isset($this->indexes[$label])) {
-                $indexNames .= $this->indexes[$label] . ' ';
+            if (isset($this->indexes[$label]['index'])) {
+                $indexNames .= $this->indexes[$label]['index'] . ' ';
             }
         }
 
@@ -202,8 +202,8 @@ class SphinxSearch
     {
         $indexNames = '';
         foreach ($indexes as &$label) {
-            if (isset($this->indexes[$label])) {
-                $indexNames .= $this->indexes[$label] . ' ';
+            if (isset($this->indexes[$label]['index'])) {
+                $indexNames .= $this->indexes[$label]['index'] . ' ';
             }
         }
 
@@ -269,7 +269,7 @@ class SphinxSearch
         $this->sphinx->SetSortMode(SPH_SORT_RELEVANCE);
         $this->resetLimits();
     }
-    
+
     /**
      * Reset limits
      */
@@ -332,7 +332,7 @@ class SphinxSearch
 
     /**
      * Set select clause
-     * 
+     *
      * @param string $select Select clause
      */
     public function setSelect($select)
@@ -342,7 +342,7 @@ class SphinxSearch
 
     /**
      * Set ranking mode
-     * 
+     *
      * @param int    $rankMode Ranking mode.
      * @param string $rankExpr Ranking expression.
      */
