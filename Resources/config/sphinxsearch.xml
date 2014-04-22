@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="search.sphinxsearch.indexer.class">Verdet\SphinxSearchBundle\Services\Indexer\Indexer</parameter>
         <parameter key="search.sphinxsearch.search.class">Verdet\SphinxSearchBundle\Services\Search\SphinxSearch</parameter>
+        <parameter key="search.sphinxsearch.pagerfanta.adapter.class">Verdet\SphinxSearchBundle\Pagerfanta\SphinxAdapter</parameter>
     </parameters>
 
     <services>
@@ -18,10 +19,14 @@
         </service>
 
         <service id="search.sphinxsearch.search" class="%search.sphinxsearch.search.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%search.sphinxsearch.searchd.host%</argument>
             <argument>%search.sphinxsearch.searchd.port%</argument>
             <argument>%search.sphinxsearch.searchd.socket%</argument>
             <argument>%search.sphinxsearch.indexes%</argument>
+        </service>
+        <service id="search.sphinxsearch.pagerfanta.adapter" class="%search.sphinxsearch.pagerfanta.adapter.class%">
+            <argument type="service" id="search.sphinxsearch.search" />
         </service>
     </services>
 </container>

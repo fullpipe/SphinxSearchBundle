@@ -1,24 +1,25 @@
 {
-  "name": "verdet/sphinxsearch-bundle",
-  "type": "symfony-bundle",
-  "description": "Sphinx search bundle for Symfony 2",
-  "keywords": ["sphinx", "sphinxsearch", "symfony2"],
-  "homepage": "https://github.com/verdet23/SphinxsearchBundle",
-  "license": "BSD-2-Clause",
-  "authors": [
-    {
-        "name": "Igor Khokhlov",
-        "homepage": "https://github.com/verdet23/"
-    }
-  ],
-  "require": {
-    "php": ">=5.3.3",
-     "neutron/sphinxsearch-api": "*"
-  },
-  "autoload": {
-    "psr-0": {
-      "Verdet\\SphinxSearchBundle": ""
-    }
-  },
-  "target-dir": "Verdet/SphinxSearchBundle"
+    "name": "verdet/sphinxsearch-bundle",
+    "type": "symfony-bundle",
+    "description": "Sphinx search bundle for Symfony 2",
+    "keywords": ["sphinx", "sphinxsearch", "symfony2"],
+    "homepage": "https://github.com/verdet23/SphinxsearchBundle",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Igor Khokhlov",
+            "homepage": "https://github.com/verdet23/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "neutron/sphinxsearch-api": "*",
+        "pagerfanta/pagerfanta": "1.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Verdet\\SphinxSearchBundle": ""
+        }
+    },
+    "target-dir": "Verdet/SphinxSearchBundle"
 }

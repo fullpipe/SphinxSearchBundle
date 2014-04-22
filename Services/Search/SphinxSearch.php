@@ -2,11 +2,18 @@
 
 namespace Verdet\SphinxSearchBundle\Services\Search;
 
+use Doctrine\ORM\EntityManager;
+
 /**
  * Sphinx search service, wrapper for SphinxAPI.php
  */
 class SphinxSearch
 {
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    protected $entityManager;
+
     /**
      * @var string
      */
@@ -41,8 +48,9 @@ class SphinxSearch
      * @param string $socket  The UNIX socket that the server is listening on.
      * @param array  $indexes The list of indexes that can be used.
      */
-    public function __construct($host = 'localhost', $port = '9312', $socket = null, array $indexes = array())
+    public function __construct(EntityManager $entityManager, $host = 'localhost', $port = '9312', $socket = null, array $indexes = array())
     {
+        $this->entityManager = $entityManager;
         $this->host = $host;
         $this->port = $port;
         $this->socket = $socket;
@@ -189,8 +197,38 @@ class SphinxSearch
             ));
         }
 
+
+
+        if (1 == count($indexes)) {
+            $indexName = $indexes[0];
+            if (!empty($this->indexes[$indexName]['entity'])) {
+                $results = $this->fetchEntities($this->indexes[$indexName]['entity'], $results);
+            }
+        }
+
         return $results;
     }
+
+    private function fetchEntities($entityName, array $results)
+    {
+        if (empty($results['matches'])) {
+            return $results;
+        }
+
+        $ids = array_keys($results['matches']);
+        $repository = $this->entityManager->getRepository($entityName);
+        $entities = $repository->findBy(array('id' => $ids));
+
+        foreach ($entities as $entity) {
+            if (isset($results['matches'][$entity->getId()])) {
+                $results['matches'][$entity->getId()]['entity'] = $entity;
+            }
+        }
+
+        return $results;
+    }
+
+
 
     /**
      * Adds a query to a multi-query batch using current settings.
