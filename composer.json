@@ -18,8 +18,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Verdet\\SphinxSearchBundle": ""
+            "Fullpipe\\SphinxSearchBundle": ""
         }
     },
-    "target-dir": "Verdet/SphinxSearchBundle"
+    "target-dir": "Fullpipe/SphinxSearchBundle"
 }
