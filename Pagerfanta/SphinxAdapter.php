@@ -1,9 +1,9 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle\Pagerfanta;
+namespace Fullpipe\SphinxSearchBundle\Pagerfanta;
 
 use Pagerfanta\Adapter\AdapterInterface;
-use Verdet\SphinxSearchBundle\Services\Search\SphinxSearch;
+use Fullpipe\SphinxSearchBundle\Services\Search\SphinxSearch;
 
 class SphinxAdapter implements AdapterInterface
 {

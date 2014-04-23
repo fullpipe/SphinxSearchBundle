@@ -1,6 +1,6 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle\Command;
+namespace Fullpipe\SphinxSearchBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -40,7 +40,7 @@ EOT
     {
         $index = $input->getArgument('index');
 
-        /** @var $indexer \Verdet\SphinxSearchBundle\Services\Indexer\Indexer */
+        /** @var $indexer \Fullpipe\SphinxSearchBundle\Services\Indexer\Indexer */
         $indexer = $this->getContainer()->get('search.sphinxsearch.indexer');
         if ($index == 'all') {
             try {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle\Services\Search;
+namespace Fullpipe\SphinxSearchBundle\Services\Search;
 
 use Doctrine\ORM\EntityManager;
 

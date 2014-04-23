@@ -5,9 +5,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="search.sphinxsearch.indexer.class">Verdet\SphinxSearchBundle\Services\Indexer\Indexer</parameter>
-        <parameter key="search.sphinxsearch.search.class">Verdet\SphinxSearchBundle\Services\Search\SphinxSearch</parameter>
-        <parameter key="search.sphinxsearch.pagerfanta.adapter.class">Verdet\SphinxSearchBundle\Pagerfanta\SphinxAdapter</parameter>
+        <parameter key="search.sphinxsearch.indexer.class">Fullpipe\SphinxSearchBundle\Services\Indexer\Indexer</parameter>
+        <parameter key="search.sphinxsearch.search.class">Fullpipe\SphinxSearchBundle\Services\Search\SphinxSearch</parameter>
+        <parameter key="search.sphinxsearch.pagerfanta.adapter.class">Fullpipe\SphinxSearchBundle\Pagerfanta\SphinxAdapter</parameter>
     </parameters>
 
     <services>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle\DependencyInjection;
+namespace Fullpipe\SphinxSearchBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;

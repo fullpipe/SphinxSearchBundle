@@ -1,6 +1,6 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle\Services\Indexer;
+namespace Fullpipe\SphinxSearchBundle\Services\Indexer;
 
 use Symfony\Component\Process\ProcessBuilder;
 

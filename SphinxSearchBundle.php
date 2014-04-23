@@ -1,6 +1,6 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle;
+namespace Fullpipe\SphinxSearchBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Verdet\SphinxSearchBundle\Command;
+namespace Fullpipe\SphinxSearchBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -33,7 +33,7 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var $indexer \Verdet\SphinxSearchBundle\Services\Indexer\Indexer */
+        /** @var $indexer \Fullpipe\SphinxSearchBundle\Services\Indexer\Indexer */
         $indexer = $this->getContainer()->get('search.sphinxsearch.indexer');
 
         $indexes = $indexer->getIndexes();
