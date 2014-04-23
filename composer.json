@@ -1,14 +1,14 @@
 {
-    "name": "verdet/sphinxsearch-bundle",
+    "name": "fullpipe/sphinxsearch-bundle",
     "type": "symfony-bundle",
     "description": "Sphinx search bundle for Symfony 2",
     "keywords": ["sphinx", "sphinxsearch", "symfony2"],
-    "homepage": "https://github.com/verdet23/SphinxsearchBundle",
+    "homepage": "https://github.com/fullpipe/SphinxsearchBundle",
     "license": "BSD-2-Clause",
     "authors": [
         {
-            "name": "Igor Khokhlov",
-            "homepage": "https://github.com/verdet23/"
+            "name": "Eugene Bravov",
+            "homepage": "https://github.com/fullpipe/"
         }
     ],
     "require": {

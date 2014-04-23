@@ -1,6 +1,6 @@
 About SphinxsearchBundle
 ========================
-This bundle is a fork of [timewasted/Search-SphinxsearchBundle](https://github.com/timewasted/Search-SphinxsearchBundle).
+This bundle is a fork of [verdet23/SphinxSearchBundle](https://github.com/verdet23/SphinxSearchBundle) a fork of [timewasted/Search-SphinxsearchBundle](https://github.com/timewasted/Search-SphinxsearchBundle).
 
 
 Installation:
@@ -13,15 +13,14 @@ Installation:
 
 Add SphinxSearchBundle in your composer.json:
 
-```js
+```json
 {
     "require": {
-        "verdet/sphinxsearch-bundle": "*",
-        "neutron/sphinxsearch-api": "*"
+        "verdet/sphinxsearch-bundle": "*"
     }
 }
 ```
-Bundle require SphinxApi via "neutron/sphinxsearch-api", 
+Bundle require SphinxApi via "neutron/sphinxsearch-api",
 specify it version according to your sphinxsearch system package version.
 
 ### Step 2: Configure the bundle
@@ -29,8 +28,12 @@ specify it version according to your sphinxsearch system package version.
 ``` yaml
 sphinx_search:
     indexes:
-        Categories: %sphinxsearch_index_categories%
-        Items:      %sphinxsearch_index_items%
+        Categories:
+            index: %sphinxsearch_index_categories%
+            entity: AcmeDemoBundle:Category
+        Items:
+            index: %sphinxsearch_index_items%
+            entity: AcmeDemoBundle:Item
     searchd:
         host:   %sphinxsearch_host%
         port:   %sphinxsearch_port%
@@ -58,6 +61,32 @@ $sphinxSearch = $this->get('search.sphinxsearch.search');
 $searchResults = $sphinxSearch->search('search query', $indexesToSearch);
 ```
 
+and result
+
+```
+    array(10) {
+        ["error"]=> string(0) ""
+        ["warning"]=> string(0) ""
+        ["status"]=> int(0)
+        ...
+
+        ["matches"]=> array(28) {
+            [123]=> array(2) {
+                ...
+                ["weight"]=> string(1) "9"
+
+                ["entity"]=> object(Acme\DemoBundle\Entity\Item) //here is my Item
+
+                ["attrs"]=> array(1) {
+                    ["name"]=> string(33) "Лаврова Екатерина"
+                }
+                ...
+            }
+        }
+
+        ...
+```
+
 This performs a search for `search query` against the index labeled `Items`.  The results of the search are stored in `$searchResults`.
 
 You can also perform more advanced searches, such as:
@@ -80,24 +109,36 @@ $searchResults = $sphinxSearch->search('search query', $indexesToSearch, $option
 
 This would again search `Items` for `search query`, but now it will only return up to the first 25 matches and weight the `Name` and `SKU` fields higher than normal.  Note that in order to define a `result_offset` or a `result_limit`, you must explicitly define both values.  Also, this search will use [the Extended query syntax](http://sphinxsearch.com/docs/current.html#extended-syntax), and exclude all results with a `disabled` attribute set to 1.
 
+And if you want to use Pagerfanta:
 
+``` php
+use use Pagerfanta\Pagerfanta;
+
+...
+
+$adapter = $this->get('search.sphinxsearch.pagerfanta.adapter');
+$pagerfanta = new Pagerfanta($adapter);
+$pagerfanta->setMaxPerPage(28);
+$pagerfanta->setCurrentPage($request->get('page', 1));
+```
+
+`$pagerfanta` will contains matches array
 
 License:
 --------
 
 ```
-Copyright (c) 2012, Ryan Rogers
-Copyright (c) 2013, Igor Khokhlov
+Copyright (c) 2012, Eugene Bravov
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met: 
+modification, are permitted provided that the following conditions are met:
 
 1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer. 
+   list of conditions and the following disclaimer.
 2. Redistributions in binary form must reproduce the above copyright notice,
    this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution. 
+   and/or other materials provided with the distribution.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
