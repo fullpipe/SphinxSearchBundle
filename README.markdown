@@ -117,6 +117,16 @@ use use Pagerfanta\Pagerfanta;
 ...
 
 $adapter = $this->get('search.sphinxsearch.pagerfanta.adapter');
+
+$indexesToSearch = array('Items');
+$options = array(
+  'field_weights' => array(
+    'Name' => 2,
+    'SKU' => 3,
+  ),
+);
+
+$adapter->setSearchParams('search query', $indexesToSearch, $options);
 $pagerfanta = new Pagerfanta($adapter);
 $pagerfanta->setMaxPerPage(28);
 $pagerfanta->setCurrentPage($request->get('page', 1));
