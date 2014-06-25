@@ -107,7 +107,7 @@ class Indexer
      */
     public function checkIndex($index)
     {
-        return in_array($index, $this->indexes);
+        return array_key_exists($index, $this->indexes);
     }
 
     /**

@@ -40,7 +40,7 @@ class SphinxAdapter implements AdapterInterface
             $this->escapeQuery
         );
 
-        return (int) $result['total'];
+        return empty($result) ? 0 : (int) $result['total'];
     }
 
     public function getSlice($offset, $length)
