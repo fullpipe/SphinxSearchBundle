@@ -129,6 +129,7 @@ class Indexer
     {
         $pb = new ProcessBuilder();
         $pb->inheritEnvironmentVariables();
+        $pb->setTimeout(null);
 
         if ($this->sudo) {
             $pb->add('sudo');
