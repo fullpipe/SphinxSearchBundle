@@ -59,4 +59,9 @@ class SphinxAdapter implements AdapterInterface
 
         return !empty($result['matches']) ? $result['matches'] : array() ;
     }
+
+    public function getSphinxClient()
+    {
+        return $this->sphinxClient;
+    }
 }
