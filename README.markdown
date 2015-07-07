@@ -16,7 +16,7 @@ Add SphinxSearchBundle in your composer.json:
 ```json
 {
     "require": {
-        "verdet/sphinxsearch-bundle": "*"
+        "fullpipe/sphinxsearch-bundle": "*"
     }
 }
 ```
